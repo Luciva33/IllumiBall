@@ -8,6 +8,33 @@ public class Hole : MonoBehaviour
     //どのボールを吸い寄せるかタグでｋ指定
     public string targetTag;
 
+    //プロパティのゲッターセッター
+    public bool IsHolding { get; set; }
+
+    //ボールが入っているかを返す
+    // public bool IsHolding()
+    // {
+    //     return isHolding;
+    // }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == targetTag)
+        {
+            // isHolding = true;
+            IsHolding = true;
+        }
+    }
+    void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.tag == targetTag)
+        {
+            // isHolding = false;
+            IsHolding = false;
+        }
+    }
+
+
     //OnTriggerStayはオブジェクト同士の重なり合いのときに、発生する
     void OnTriggerStay(Collider other)
     {
